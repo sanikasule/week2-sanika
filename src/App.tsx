@@ -134,9 +134,19 @@ function App() {
             render: v => `$${Number(v).toFixed(2)}`
            },
           { key: 'pnl', header: 'P&L', 
-            render: v => String(v) },
+            render: v => {
+              const n = Number(v);
+              return <span style={{color: n>=0 ? 'green' : 'red'}}>
+                {n>=0 ? '+' : ''}{n}
+              </span>
+            } },
           { key: 'pnlPct', header: 'P&L %',
-            render: v => `${Number(v).toFixed(2)}%` 
+            render: v => {
+              const n = Number(v);
+              return <span style={{color: n>=0 ? 'green' : 'red'}}>
+                {n>=0 ? "+" : "-"}${Number(v).toFixed(2)}%
+              </span>
+            } 
           },
           ]}
       />
