@@ -35,3 +35,13 @@ export interface Holding {
     currentValue: number
     totalReturn: number;
 }
+
+export interface Position {
+    id: string;
+    symbol: string;
+    qty: number;
+    avgPrice: number;
+    ltp: number;
+    pnl: number;
+    pnlPct: number;
+}
