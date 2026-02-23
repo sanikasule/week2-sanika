@@ -127,20 +127,20 @@ function App() {
         data={positions}
         rowKey='id'
         columns={[
-          { key: 'symbol', header: 'Symbol' },
-          { key: 'qty', header: 'Quantity'  },
-          { key: 'avgPrice', header: 'Average Price', render: v => `$${Number(v).toFixed(2)}`},
-          { key: 'ltp', header: 'LTP', 
+          { key: 'symbol', header: 'Symbol', sortable: true },
+          { key: 'qty', header: 'Quantity', sortable: true  },
+          { key: 'avgPrice', header: 'Average Price', sortable: true, render: v => `$${Number(v).toFixed(2)}`},
+          { key: 'ltp', header: 'LTP', sortable: true, 
             render: v => `$${Number(v).toFixed(2)}`
            },
-          { key: 'pnl', header: 'P&L', 
+          { key: 'pnl', header: 'P&L', sortable: true,
             render: v => {
               const n = Number(v);
               return <span style={{color: n>=0 ? 'green' : 'red'}}>
                 {n>=0 ? '+' : ''}{n}
               </span>
             } },
-          { key: 'pnlPct', header: 'P&L %',
+          { key: 'pnlPct', header: 'P&L %', sortable: true,
             render: v => {
               const n = Number(v);
               return <span style={{color: n>=0 ? 'green' : 'red'}}>
