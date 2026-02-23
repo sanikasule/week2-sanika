@@ -1,9 +1,9 @@
 // src/App.tsx
 import { useState } from 'react';
 // Data
-import { stocks, trades, holdings } from './data/stockData';
+import { stocks, trades, holdings, positions } from './data/stockData';
 // Types
-import type { Stock, Trade, Holding } from './types/stock.types';
+import type { Stock, Trade, Holding, Position } from './types/stock.types';
 // Components
 import StockCard from './components/StockCard';
 import PortfolioSummary from './components/PortfolioSummary';
@@ -119,6 +119,26 @@ function App() {
               </span>;
           }},
         ]} 
+      />
+
+      {/* positions table */}
+      <h2 style={{ color: '#1E40AF' }}>Current Positions</h2>
+      <DataTable<Position>
+        data={positions}
+        rowKey='id'
+        columns={[
+          { key: 'symbol', header: 'Symbol' },
+          { key: 'qty', header: 'Quantity'  },
+          { key: 'avgPrice', header: 'Average Price', render: v => `$${Number(v).toFixed(2)}`},
+          { key: 'ltp', header: 'LTP', 
+            render: v => `$${Number(v).toFixed(2)}`
+           },
+          { key: 'pnl', header: 'P&L', 
+            render: v => String(v) },
+          { key: 'pnlPct', header: 'P&L %',
+            render: v => `${Number(v).toFixed(2)}%` 
+          },
+          ]}
       />
 
       {/* Utility Types */}
