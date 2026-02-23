@@ -81,7 +81,7 @@ function DataTable<T extends object> ({
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setFilterText(e.target.value)}
             style={{ padding: '6px 10px', borderRadius: 4,
-            border: '1px solid #D1D5DB', width: 220 }}
+            border: '1px solid #D1D5DB', width: 220, fontFamily: 'Times New Roman, serif', fontSize: '15px' }}
             />
         </div>
         )}
