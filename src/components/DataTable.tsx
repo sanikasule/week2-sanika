@@ -16,6 +16,7 @@ interface DataTableProps<T extends object> {
     rowKey: keyof T; //which field is unique key
     onRowClick?: (row: T) => void;
     emptyMessage?: string;
+    filterKey?: keyof T;
 }
 
 type SortDir = 'asc' | 'desc' | null; //since used here only the values accepted
@@ -32,10 +33,13 @@ function DataTable<T extends object> ({
     rowKey,
     onRowClick,
     emptyMessage = 'No data found.', 
+    filterKey
 }: DataTableProps<T>) {
     if (data.length === 0) return <p>{emptyMessage}</p>
 
     const [sorting, setSorting] = useState<SortState<T>>({key: null, dir: null});
+
+    const [filterText, setFilterText] = useState('');
 
     const handleSort = (key: keyof T) => {
         setSorting(prev => ({
@@ -53,7 +57,22 @@ function DataTable<T extends object> ({
         return 0;
     })
 
+    const filtered = filterText && filterKey ? 
+    sorted.filter(row => String(row[filterKey]).toLowerCase().includes(filterText.toLowerCase())) : sorted;
+
     return (
+        <>
+            {filterKey && (
+        <div style={{ marginBottom: 8 }}>
+            <input type='text' placeholder={`Filter by ${String(filterKey)}...`} value={filterText}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setFilterText(e.target.value)}
+            style={{ padding: '6px 10px', borderRadius: 4,
+            border: '1px solid #D1D5DB', width: 220 }}
+            />
+        </div>
+        )}
+
         <table style={{width: '100%', borderCollapse: 'collapse'}}>
             <thead>
                 <tr style={{background: '#1e3a8a', color: '#fff'}}>
@@ -67,7 +86,7 @@ function DataTable<T extends object> ({
                 </tr>
             </thead>
             <tbody>
-                {sorted.map((row, ri) => (
+                {filtered.map((row, ri) => (
                     <tr key={String(row[rowKey])} onClick={() => onRowClick?.(row)}
                     style={{background: ri%2 === 0 ? '#fff': '#f8fafc', 
                     cursor: onRowClick ? 'pointer' : 'default'}}>
@@ -80,6 +99,7 @@ function DataTable<T extends object> ({
                 ))}
             </tbody>
         </table>
+        </>
     )
 }
 
