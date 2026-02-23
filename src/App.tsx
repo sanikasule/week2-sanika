@@ -39,8 +39,8 @@ function App() {
   };
 
   return (
-    <div style={{ maxWidth: 1100, margin: '0 auto', padding: 24, fontFamily: 'Arial, sans-serif' }}>
-    <h1 style={{ color: '#1E3A8A' }}>Stock Market Dashboard</h1>
+    <div style={{ maxWidth: 1100, margin: '0 auto', padding: 24, fontFamily: 'Times New Roman, serif', background: '#0e0741' }}>
+    <h1 style={{ color: '#E6EDF3' }}>Stock Market Dashboard</h1>
     {/* Event Typing */}
     <SearchBar onSearch={setSearchQuery} onFilterChange={setSectorFilter} 
     placeholder='Search by symbol or name...'/>
@@ -57,10 +57,11 @@ function App() {
     <PortfolioSummary availableStocks={stocks} />
 
     {/* Generic Components — Stock table */}
-    <h2 style={{ color: '#1E40AF' }}>Live Quotes</h2>
+    <h2 style={{ color: '#E6EDF3', marginTop: 40 }}>Live Quotes</h2>
       <DataTable<Stock>
         data={filteredStocks}
         rowKey='id' onRowClick={setSelectedStock} emptyMessage='No stocks match your search.'
+        pageSize={0}
         columns={[
         { key: 'symbol', header: 'Symbol' },
         { key: 'name', header: 'Company' },
@@ -80,10 +81,11 @@ function App() {
         ]}
       />
       {/* Generic Components — Trade table */}
-      <h2 style={{ color: '#1E40AF' }}>Trade History</h2>
+      <h2 style={{ color: '#E6EDF3', marginTop: 30 }}>Trade History</h2>
       <DataTable<Trade>
         data={tradeHistory}
         rowKey='id'
+        pageSize={0}
         columns={[
           { key: 'symbol', header: 'Symbol' },
           {
@@ -101,10 +103,11 @@ function App() {
       />
 
       {/* holdings table */}
-      <h2 style={{ color: '#1E40AF' }}>Current Holdings</h2>
+      <h2 style={{ color: '#E6EDF3', marginTop: 30 }}>Current Holdings</h2>
       <DataTable<Holding>
         data={holdings}
         rowKey='id'
+        pageSize={2}
         columns={[
           { key: 'symbol', header: 'Symbol' },
           { key: 'qty', header: 'Quantity'  },
@@ -114,7 +117,7 @@ function App() {
             key: 'totalReturn', header: 'Total Return',
             render: v => {
               const n = Number(v);
-              return <span style={{ color: n >= 0 ? 'green' : 'red', fontWeight: 'bold' }}>
+              return <span style={{ color: n >= 0 ? 'green' : 'red' }}>
                 {n >= 0 ? '+' : ''}${n.toFixed(2)}
               </span>;
           }},
@@ -122,11 +125,12 @@ function App() {
       />
 
       {/* positions table */}
-      <h2 style={{ color: '#1E40AF' }}>Current Positions</h2>
+      <h2 style={{ color: '#E6EDF3', marginTop: 40 }}>Current Positions</h2>
       <DataTable<Position>
         data={positions}
         rowKey='id'
         filterKey='symbol'
+        pageSize={2}
         columns={[
           { key: 'symbol', header: 'Symbol', sortable: true },
           { key: 'qty', header: 'Quantity', sortable: true  },
@@ -153,7 +157,7 @@ function App() {
       />
 
       {/* Utility Types */}
-      <h2 style={{ color: '#1E40AF' }}>New Trade</h2>
+      <h2 style={{ color: '#E6EDF3', marginTop: 40 }}>New Trade</h2>
       <TradeForm
         stocks={stocks}
         onSubmitTrade={handleNewTrade}

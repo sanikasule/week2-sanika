@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //col definition is generic
 interface Column<T> {
@@ -17,6 +17,7 @@ interface DataTableProps<T extends object> {
     onRowClick?: (row: T) => void;
     emptyMessage?: string;
     filterKey?: keyof T;
+    pageSize: number;
 }
 
 type SortDir = 'asc' | 'desc' | null; //since used here only the values accepted
@@ -33,7 +34,8 @@ function DataTable<T extends object> ({
     rowKey,
     onRowClick,
     emptyMessage = 'No data found.', 
-    filterKey
+    filterKey,
+    pageSize
 }: DataTableProps<T>) {
     if (data.length === 0) return <p>{emptyMessage}</p>
 
@@ -60,6 +62,17 @@ function DataTable<T extends object> ({
     const filtered = filterText && filterKey ? 
     sorted.filter(row => String(row[filterKey]).toLowerCase().includes(filterText.toLowerCase())) : sorted;
 
+    const [page, setPage] = useState(1);
+    const totalPages = pageSize ? Math.ceil(filtered.length / pageSize) : 1;
+
+    const safePage = Math.min(page, Math.max(1, totalPages));
+
+    const paginated = pageSize ? filtered.slice((safePage - 1) * pageSize, safePage * pageSize) : filtered;
+
+    useEffect(() => {
+        setPage(1);
+    }, [filterText]);
+
     return (
         <>
             {filterKey && (
@@ -77,7 +90,7 @@ function DataTable<T extends object> ({
             <thead>
                 <tr style={{background: '#1e3a8a', color: '#fff'}}>
                     {columns.map(col => (
-                        <th key={String(col.key)} style={{padding: 8, textAlign: 'left', cursor: col.sortable ? 'pointer' : 'default', background: '#1E3A8A', color: '#fff', userSelect: 'none'}} 
+                        <th key={String(col.key)} style={{padding: 8, textAlign: 'left', cursor: col.sortable ? 'pointer' : 'default', background: '#8236fd', color: '#fff', userSelect: 'none'}} 
                         onClick={() => col.sortable && handleSort(col.key)}>
                             {col.header} 
                             {col.sortable && sorting.key === col.key ? (sorting.dir === 'asc' ? ' ▲' : ' ▼') : col.sortable ? ' ⇅' : ''}
@@ -86,12 +99,12 @@ function DataTable<T extends object> ({
                 </tr>
             </thead>
             <tbody>
-                {filtered.map((row, ri) => (
+                {paginated.map((row, ri) => (
                     <tr key={String(row[rowKey])} onClick={() => onRowClick?.(row)}
                     style={{background: ri%2 === 0 ? '#fff': '#f8fafc', 
                     cursor: onRowClick ? 'pointer' : 'default'}}>
                         {columns.map(col => (
-                            <td key={String(col.key)} style={{padding: 8}}>
+                            <td key={String(col.key)} style={{padding: 10}}>
                                 {col.render ? col.render(row[col.key], row) : String(row[col.key])}
                             </td>
                         ))}
@@ -99,6 +112,27 @@ function DataTable<T extends object> ({
                 ))}
             </tbody>
         </table>
+
+        {pageSize && totalPages > 1 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 15 }}>
+                <button disabled={safePage <= 1} onClick={() => setPage(p => Math.max(1, p - 1))}
+                style={{ padding: '4px 12px', cursor: safePage <= 1 ? 'not-allowed' : 'pointer', background: '#8236fd', color: '#fff', border: '2px solid #ababb9', borderRadius: 10, fontFamily: 'Times New Roman, serif', fontSize: '15px' }}
+            >
+                    ← Previous
+                </button>
+ 
+                <span style={{ fontSize: '15px', color: '#fff' }}>
+                    Page {safePage} of {totalPages} {' '}({filtered.length} rows)
+                </span>
+ 
+                <button disabled={safePage >= totalPages}
+                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                style={{ padding: '4px 12px', cursor: safePage >= totalPages ? 'not-allowed' : 'pointer', background: '#8236fd', color: '#fff', border: '2px solid #ababb9', borderRadius: 10, fontFamily: 'Times New Roman, serif', fontSize: '15px' }}
+                >
+                    Next →
+                </button>
+            </div>
+        )}
         </>
     )
 }
