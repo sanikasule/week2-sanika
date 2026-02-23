@@ -126,6 +126,7 @@ function App() {
       <DataTable<Position>
         data={positions}
         rowKey='id'
+        filterKey='symbol'
         columns={[
           { key: 'symbol', header: 'Symbol', sortable: true },
           { key: 'qty', header: 'Quantity', sortable: true  },
