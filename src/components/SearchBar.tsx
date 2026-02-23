@@ -38,11 +38,11 @@ const SearchBar: React.FC<SearchBarProps> = ({
     };
 
     return (
-        <div style={{display: 'flex', gap: 8, marginBottom: 16}}>
+        <div style={{display: 'flex', gap: 8, marginBottom: 20}}>
             <input value={query} onChange={handleInputChange} onKeyDown={handleKeyDown}
-            placeholder={placeholder} style={{flex: 1, padding: 8, borderRadius: 4}}/>
-            <button onClick={handleClear}>Clear</button>
-            <select onChange={handleSectorChange}>
+            placeholder={placeholder} style={{flex: 1, padding: 8, border: '2px solid #ababb9',borderRadius: 4, background: '#fff', color: '#E6EDF3', fontFamily: 'Times New Roman, serif', fontSize: '15px'}}/>
+            <button onClick={handleClear} style={{background: '#8236fd', color: '#fff', border: '2px solid #ababb9', borderRadius: 10, fontFamily: 'Times New Roman, serif', fontSize: '15px'}}>Clear</button>
+            <select onChange={handleSectorChange} style={{border: '2px solid #ababb9', borderRadius: 10, fontFamily: 'Times New Roman, serif', fontSize: '15px'}}>
                 <option value="">All Sectors</option>
                 <option value="Technology">Technology</option>
                 <option value="Automotive">Automotive</option>

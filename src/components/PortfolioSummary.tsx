@@ -52,13 +52,13 @@ const PortfolioSummary: React.FC<PortfolioSummaryProps> = ({availableStocks}) =>
     if(portfolio.error) return <p>Error: {portfolio.error}</p>;
 
     return (
-        <div style={{border: '1px solid #d1d5db', borderRadius: 8, padding: 16}}>
+        <div style={{border: '1px solid #d1d5db', borderRadius: 8, padding: 16, marginTop: 30, color: '#E6EDF3'}}>
             <h2>Portfolio Summary</h2>
             <p>Total Value: ${portfolio.totalValue.toLocaleString()}</p>
             <p style={{color: portfolio.gainLoss >= 0 ? 'green' : 'red'}}>
                 Gain/Loss: {portfolio.gainLoss.toFixed(2)}
             </p>
-            <select value={selectedSector} onChange={e => setSelectedSector(e.target.value)}>
+            <select value={selectedSector} onChange={e => setSelectedSector(e.target.value)} style={{border: '2px solid #ababb9', borderRadius: 5, fontFamily: 'Times New Roman, serif', fontSize: '15px'}}>
                 <option>All</option>
                 <option>Technology</option>
                 <option>Automotive</option>
@@ -66,7 +66,7 @@ const PortfolioSummary: React.FC<PortfolioSummaryProps> = ({availableStocks}) =>
             </select>
             <ul>
                 {filtered.map(s => 
-                    <li key={s.id}>{s.symbol}: ${s.price.toFixed(2)}</li>
+                    <li key={s.id} style={{padding: 5}}>{s.symbol}: ${s.price.toFixed(2)}</li>
                 )}
             </ul>
         </div>

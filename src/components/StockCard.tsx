@@ -18,7 +18,7 @@ const StockCard: React.FC<StockCardProps> = ({
 
     return (
         <div onClick={() => onSelect?. (stock)}
-        style={{border: isSelected ? '2px solid #1E40AF' : '1px solid #D1D5DB', borderRadius: 8, 
+        style={{border: isSelected ? '2px solid #1E40AF' : '2px solid #ababb9', borderRadius: 8, 
             padding: 16, cursor: 'pointer', background: isSelected ? '#DBEAFE' : '#fff'
         }}>
             <h3>{stock.symbol} - {stock.name}</h3>
