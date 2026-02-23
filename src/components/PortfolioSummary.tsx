@@ -25,7 +25,7 @@ const PortfolioSummary: React.FC<PortfolioSummaryProps> = ({availableStocks}) =>
 
     //primitives - TS infers type from initial value
     const [selectedSector, setSelectedSector] = useState<string>('All');
-    const [sortBy, setSortBy] = useState<'price' | 'change' | 'volume'>('price');
+    // const [sortBy, setSortBy] = useState<'price' | 'change' | 'volume'>('price');
 
     useEffect(() => {
         //simulate async fetch data

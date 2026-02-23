@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 // Data
 import { stocks, trades } from './data/stockData';
 // Types
@@ -9,7 +9,7 @@ import StockCard from './components/StockCard';
 import PortfolioSummary from './components/PortfolioSummary';
 import SearchBar from './components/SearchBar';
 import TradeForm from './components/TradeForm';
-import DataTable from './components/dataTable';
+import DataTable from './components/DataTable';
 
 function App() {
   const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
