@@ -20,7 +20,7 @@ const PositionFeature: React.FC<PositionFeatureProps> = ({
  
   return (
     <div style={{marginBottom: 40}}>
-      <h2 style={{ color: '#1E40AF', marginTop: 32 }}>
+      <h2 style={{ color: '#E6EDF3', marginTop: 32 }}>
         Current Positions
         <span style={{ fontSize: 14, fontWeight: 'normal', color: '#6B7280', marginLeft: 12 }}>
           {visibleItems.length} of {positions.length} shown
