@@ -17,7 +17,7 @@ interface DataTableProps<T extends object> {
     onRowClick?: (row: T) => void;
     emptyMessage?: string;
     filterKey?: keyof T;
-    // pageSize: number;
+    pageSize: number;
 }
 
 type SortDir = 'asc' | 'desc' | null; //since used here only the values accepted
@@ -35,7 +35,7 @@ function DataTable<T extends object> ({
     onRowClick,
     emptyMessage = 'No data found.', 
     filterKey,
-    // pageSize
+    pageSize
 }: DataTableProps<T>) {
     if (data.length === 0) return <p>{emptyMessage}</p>
 

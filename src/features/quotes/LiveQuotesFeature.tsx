@@ -1,10 +1,9 @@
 import React from 'react'; 
-import type { Stock } from '../types/stock.types'; 
-import StockCard from '../components/StockCard'; 
-import SearchBar from '../components/SearchBar'; 
-import useVirtualList from '../hooks/useVirtualList'; 
-
-// NEW 
+import type { Stock } from '../../types/stock.types'; 
+import StockCard from '../../components/StockCard'; 
+import SearchBar from '../../components/SearchBar'; 
+import useVirtualList from '../../hooks/useVirtualList'; 
+ 
 const ROW_HEIGHT = 44; // NEW 
 const VISIBLE_ROWS = 12; // NEW 
 const CONTAINER_HEIGHT = ROW_HEIGHT * VISIBLE_ROWS; // NEW 

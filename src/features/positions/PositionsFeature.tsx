@@ -1,7 +1,7 @@
 import React from 'react';
-import type { Position } from '../types/stock.types';
-import DataTable          from '../components/DataTable';
-import useInfiniteScroll  from '../hooks/useInfiniteScroll'; // NEW
+import type { Position } from '../../types/stock.types';
+import DataTable          from '../../components/DataTable';
+import useInfiniteScroll  from '../../hooks/useInfiniteScroll'; // NEW
  
 interface PositionFeatureProps {
   positions:  Position[];
@@ -32,6 +32,7 @@ const PositionFeature: React.FC<PositionFeatureProps> = ({
         data={visibleItems}
         rowKey="id"
         filterKey="symbol"
+        pageSize={10}
         columns={[
           { key: 'symbol',   header: 'Symbol',  sortable: true },
           { key: 'qty', header: 'Quantity',   sortable: true },
