@@ -63,6 +63,10 @@ const PortfolioSummary: React.FC<PortfolioSummaryProps> = ({availableStocks}) =>
                 <option>Technology</option>
                 <option>Automotive</option>
                 <option>Finance</option>
+                <option value="Consumer Discretionary">Consumer Discretionary</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Energy">Energy</option>
+                <option value="Entertainment">Entertainment</option>
             </select>
             <ul>
                 {filtered.map(s => 
