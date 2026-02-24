@@ -1,8 +1,8 @@
 import React from 'react';
-import type { Trade, Stock } from '../types/stock.types';
-import DataTable          from '../components/DataTable';
-import TradeForm          from '../components/TradeForm';
-import useInfiniteScroll  from '../hooks/useInfiniteScroll'; // NEW
+import type { Trade, Stock } from '../../types/stock.types';
+import DataTable          from '../../components/DataTable';
+import TradeForm          from '../../components/TradeForm';
+import useInfiniteScroll  from '../../hooks/useInfiniteScroll'; // NEW
  
 type NewTradeInput = Omit<Trade, 'id' | 'date'>;
  
@@ -37,6 +37,7 @@ const TradeFeature: React.FC<TradeFeatureProps> = ({
         data={visibleItems}
         rowKey="id"
         filterKey="symbol"
+        pageSize={10}
         columns={[
           { key: 'symbol',   header: 'Symbol',  sortable: true },
           { key: 'type',     header: 'Type',
