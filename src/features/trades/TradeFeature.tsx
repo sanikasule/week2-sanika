@@ -37,7 +37,7 @@ const TradeFeature: React.FC<TradeFeatureProps> = ({
         data={visibleItems}
         rowKey="id"
         filterKey="symbol"
-        pageSize={10}
+        pageSize={0}
         columns={[
           { key: 'symbol',   header: 'Symbol',  sortable: true },
           { key: 'type',     header: 'Type',

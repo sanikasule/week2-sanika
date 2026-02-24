@@ -62,16 +62,16 @@ function DataTable<T extends object> ({
     const filtered = filterText && filterKey ? 
     sorted.filter(row => String(row[filterKey]).toLowerCase().includes(filterText.toLowerCase())) : sorted;
 
-    // const [page, setPage] = useState(1);
-    // const totalPages = pageSize ? Math.ceil(filtered.length / pageSize) : 1;
+    const [page, setPage] = useState(1);
+    const totalPages = pageSize ? Math.ceil(filtered.length / pageSize) : 1;
 
-    // const safePage = Math.min(page, Math.max(1, totalPages));
+    const safePage = Math.min(page, Math.max(1, totalPages));
 
-    // const paginated = pageSize ? filtered.slice((safePage - 1) * pageSize, safePage * pageSize) : filtered;
+    const paginated = pageSize ? filtered.slice((safePage - 1) * pageSize, safePage * pageSize) : filtered;
 
-    // useEffect(() => {
-    //     setPage(1);
-    // }, [filterText]);
+    useEffect(() => {
+        setPage(1);
+    }, [filterText]);
 
     return (
         <>
@@ -99,7 +99,7 @@ function DataTable<T extends object> ({
                 </tr>
             </thead>
             <tbody>
-                {filtered.map((row, ri) => (
+                {paginated.map((row, ri) => (
                     <tr key={String(row[rowKey])} onClick={() => onRowClick?.(row)}
                     style={{background: ri%2 === 0 ? '#fff': '#f8fafc', 
                     cursor: onRowClick ? 'pointer' : 'default'}}>
@@ -113,11 +113,11 @@ function DataTable<T extends object> ({
             </tbody>
         </table>
 
-        {/* {pageSize && totalPages > 1 && (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 15 }}> */}
+        {pageSize && totalPages > 1 && (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 15 }}>
         
         {/* Previous Button */}
-        {/* <button 
+        <button 
             disabled={safePage <= 1} 
             onClick={() => setPage(p => Math.max(1, p - 1))}
             style={{ 
@@ -138,10 +138,10 @@ function DataTable<T extends object> ({
         <span style={{ fontSize: '15px', color: '#fff' }}>
             Page <strong>{safePage}</strong> of <strong>{totalPages}</strong> 
             <span style={{ marginLeft: 8, opacity: 0.8 }}>({filtered.length} rows)</span>
-        </span> */}
+        </span>
 
         {/* Next Button */}
-        {/* <button 
+        <button 
             disabled={safePage >= totalPages}
             onClick={() => setPage(p => Math.min(totalPages, p + 1))}
             style={{ 
@@ -159,7 +159,7 @@ function DataTable<T extends object> ({
             Next →
         </button>
     </div>
-)} */}
+)}
         </>
     )
 }

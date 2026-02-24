@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; 
+import { Component } from 'react'; 
 import type {ErrorInfo, ReactNode} from 'react';
 // ReactNode = anything React can render 
 // ErrorInfo = the error's component stack trace 
