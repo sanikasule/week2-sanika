@@ -25,7 +25,7 @@ const TradeFeature: React.FC<TradeFeatureProps> = ({
  
   return (
     <div style={{marginBottom: 40}}>
-      <h2 style={{ color: '#1E40AF', marginTop: 32 }}>
+      <h2 style={{ color: '#E6EDF3', marginTop: 32 }}>
         Trade History
         <span style={{ fontSize: 14, fontWeight: 'normal', color: '#6B7280', marginLeft: 12 }}>
           {visibleItems.length} of {tradeHistory.length} shown
@@ -70,7 +70,7 @@ const TradeFeature: React.FC<TradeFeatureProps> = ({
       )}
  
       {/* Trade form is unchanged */}
-      <h2 style={{ color: '#1E40AF', marginTop: 32 }}>Place a Trade</h2>
+      <h2 style={{ color: '#E6EDF3', marginTop: 32 }}>Place a Trade</h2>
       <TradeForm
         stocks={stocks}
         onSubmitTrade={onSubmitTrade}

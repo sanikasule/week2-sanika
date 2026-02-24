@@ -9,7 +9,7 @@ const PortfolioFeature: React.FC<PortfolioFeatureProps> =
 ({ availableStocks }) => { 
     return ( 
         <> 
-            <h2 style={{ color: '#1E40AF' }}>Portfolio Summary</h2> <PortfolioSummary availableStocks={availableStocks} /> 
+            <h2 style={{ color: '#E6EDF3' }}>Portfolio Summary</h2> <PortfolioSummary availableStocks={availableStocks} /> 
         </> 
     ); 
 }; export default PortfolioFeature; // REQUIRED for React.lazy()

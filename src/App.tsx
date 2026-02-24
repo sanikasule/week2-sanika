@@ -15,6 +15,7 @@ import SuspenseBoundary from './boundaries/SuspenseBoundary';
 import TableSkeleton from './skeletons/TableSkeleton';
 import CardGridSkeleton from './skeletons/CardGridSkeleton';
 import FormSkeleton from './skeletons/FormSkeleton';
+import CurrencyTicker from "./components/CurrencyTicker";
 
 const LiveQuotesFeature = lazy(function() {
   return import('./features/quotes/LiveQuotesFeature')
@@ -70,6 +71,7 @@ function App() {
   return (
     <div style={{ maxWidth: 1100, margin: '0 auto', padding: 24, fontFamily: 'Times New Roman, serif', background: '#0e0741' }}>
     <h1 style={{ color: '#E6EDF3' }}>Stock Market Dashboard</h1>
+    <CurrencyTicker />
     {/* Event Typing */}
     {/* <SearchBar onSearch={setSearchQuery} onFilterChange={setSectorFilter} 
     placeholder='Search by symbol or name...'/> */}
