@@ -19,7 +19,7 @@ const StockCard: React.FC<StockCardProps> = ({
     return (
         <div onClick={() => onSelect?. (stock)}
         style={{border: isSelected ? '2px solid #1E40AF' : '2px solid #ababb9', borderRadius: 8, 
-            padding: 16, cursor: 'pointer', background: isSelected ? '#DBEAFE' : '#fff'
+            padding: 16, cursor: 'pointer', background: isSelected ? '#DBEAFE' : '#eee'
         }}>
             <h3>{stock.symbol} - {stock.name}</h3>
             <p>Price: ${stock.price.toFixed(2)}</p>
