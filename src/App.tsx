@@ -10,6 +10,9 @@ import PortfolioSummary from './components/PortfolioSummary';
 import SearchBar from './components/SearchBar';
 import TradeForm from './components/TradeForm';
 import DataTable from './components/DataTable';
+import TradeFeature from './components/TradeFeature';
+import LiveQuotesFeature from './components/LiveQuotesFeature';
+import PositionFeature from './components/PositionsFeature';
 
 function App() {
   const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
@@ -42,26 +45,26 @@ function App() {
     <div style={{ maxWidth: 1100, margin: '0 auto', padding: 24, fontFamily: 'Times New Roman, serif', background: '#0e0741' }}>
     <h1 style={{ color: '#E6EDF3' }}>Stock Market Dashboard</h1>
     {/* Event Typing */}
-    <SearchBar onSearch={setSearchQuery} onFilterChange={setSectorFilter} 
-    placeholder='Search by symbol or name...'/>
+    {/* <SearchBar onSearch={setSearchQuery} onFilterChange={setSectorFilter} 
+    placeholder='Search by symbol or name...'/> */}
 
     {/* Typing Props */}
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+    {/* <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
       {filteredStocks.map(stock => (
       <StockCard key={stock.id} stock={stock} isSelected={selectedStock?.id === stock.id}
         onSelect={setSelectedStock} />
       ))}
-    </div>
+    </div> */}
 
     {/* Typing State */}
-    <PortfolioSummary availableStocks={stocks} />
+    {/* <PortfolioSummary availableStocks={stocks} /> */}
 
     {/* Generic Components — Stock table */}
-    <h2 style={{ color: '#E6EDF3', marginTop: 40 }}>Live Quotes</h2>
+    {/* <h2 style={{ color: '#E6EDF3', marginTop: 40 }}>Live Quotes</h2>
       <DataTable<Stock>
         data={filteredStocks}
         rowKey='id' onRowClick={setSelectedStock} emptyMessage='No stocks match your search.'
-        pageSize={0}
+        // pageSize={0}
         columns={[
         { key: 'symbol', header: 'Symbol' },
         { key: 'name', header: 'Company' },
@@ -79,13 +82,13 @@ function App() {
             render: v => Number(v).toLocaleString()
           },
         ]}
-      />
+      /> */}
       {/* Generic Components — Trade table */}
-      <h2 style={{ color: '#E6EDF3', marginTop: 30 }}>Trade History</h2>
+      {/* <h2 style={{ color: '#E6EDF3', marginTop: 30 }}>Trade History</h2>
       <DataTable<Trade>
         data={tradeHistory}
         rowKey='id'
-        pageSize={0}
+        // pageSize={0}
         columns={[
           { key: 'symbol', header: 'Symbol' },
           {
@@ -100,14 +103,14 @@ function App() {
           },
           { key: 'date', header: 'Date' },
         ]}
-      />
+      /> */}
 
       {/* holdings table */}
-      <h2 style={{ color: '#E6EDF3', marginTop: 30 }}>Current Holdings</h2>
+      {/* <h2 style={{ color: '#E6EDF3', marginTop: 30 }}>Current Holdings</h2>
       <DataTable<Holding>
         data={holdings}
         rowKey='id'
-        pageSize={4}
+        // pageSize={4}
         columns={[
           { key: 'symbol', header: 'Symbol' },
           { key: 'qty', header: 'Quantity'  },
@@ -122,15 +125,15 @@ function App() {
               </span>;
           }},
         ]} 
-      />
+      /> */}
 
       {/* positions table */}
-      <h2 style={{ color: '#E6EDF3', marginTop: 40 }}>Current Positions</h2>
+      {/* <h2 style={{ color: '#E6EDF3', marginTop: 40 }}>Current Positions</h2>
       <DataTable<Position>
         data={positions}
         rowKey='id'
         filterKey='symbol'
-        pageSize={4}
+        // pageSize={4}
         columns={[
           { key: 'symbol', header: 'Symbol', sortable: true },
           { key: 'qty', header: 'Quantity', sortable: true  },
@@ -154,15 +157,21 @@ function App() {
             } 
           },
           ]}
-      />
+      /> */}
 
       {/* Utility Types */}
-      <h2 style={{ color: '#E6EDF3', marginTop: 40 }}>New Trade</h2>
+      {/* <h2 style={{ color: '#E6EDF3', marginTop: 40 }}>New Trade</h2>
       <TradeForm
         stocks={stocks}
         onSubmitTrade={handleNewTrade}
         initialValues={selectedStock ?? {}}
-     />
+     /> */}
+
+     <TradeFeature tradeHistory={tradeHistory} stocks={stocks} selectedStock={selectedStock} onSubmitTrade={() => {}}/>
+
+      <LiveQuotesFeature stocks={stocks} selectedStock={selectedStock} onSelectStock={() => {}} onFilterChange={() => {}} onSearch={() => {}}/>
+
+        <PositionFeature positions={positions}/>
     </div>
   );
 }
