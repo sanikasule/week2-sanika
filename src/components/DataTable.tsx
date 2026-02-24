@@ -114,25 +114,52 @@ function DataTable<T extends object> ({
         </table>
 
         {pageSize && totalPages > 1 && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 15 }}>
-                <button disabled={safePage <= 1} onClick={() => setPage(p => Math.max(1, p - 1))}
-                style={{ padding: '4px 12px', cursor: safePage <= 1 ? 'not-allowed' : 'pointer', background: '#8236fd', color: '#fff', border: '2px solid #ababb9', borderRadius: 10, fontFamily: 'Times New Roman, serif', fontSize: '15px' }}
-            >
-                    ← Previous
-                </button>
- 
-                <span style={{ fontSize: '15px', color: '#fff' }}>
-                    Page {safePage} of {totalPages} {' '}({filtered.length} rows)
-                </span>
- 
-                <button disabled={safePage >= totalPages}
-                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                style={{ padding: '4px 12px', cursor: safePage >= totalPages ? 'not-allowed' : 'pointer', background: '#8236fd', color: '#fff', border: '2px solid #ababb9', borderRadius: 10, fontFamily: 'Times New Roman, serif', fontSize: '15px' }}
-                >
-                    Next →
-                </button>
-            </div>
-        )}
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 15 }}>
+        
+        {/* Previous Button */}
+        <button 
+            disabled={safePage <= 1} 
+            onClick={() => setPage(p => Math.max(1, p - 1))}
+            style={{ 
+                padding: '4px 12px', 
+                cursor: safePage <= 1 ? 'not-allowed' : 'pointer', 
+                background: safePage <= 1 ? '#5a25b1' : '#8236fd', 
+                opacity: safePage <= 1 ? 0.6 : 1,
+                color: '#fff', 
+                border: '2px solid #ababb9', 
+                borderRadius: 10, 
+                fontFamily: 'serif', 
+                fontSize: '15px' 
+            }}
+        >
+            ← Previous
+        </button>
+
+        <span style={{ fontSize: '15px', color: '#fff' }}>
+            Page <strong>{safePage}</strong> of <strong>{totalPages}</strong> 
+            <span style={{ marginLeft: 8, opacity: 0.8 }}>({filtered.length} rows)</span>
+        </span>
+
+        {/* Next Button */}
+        <button 
+            disabled={safePage >= totalPages}
+            onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+            style={{ 
+                padding: '4px 12px', 
+                cursor: safePage >= totalPages ? 'not-allowed' : 'pointer', 
+                background: safePage >= totalPages ? '#5a25b1' : '#8236fd', 
+                opacity: safePage >= totalPages ? 0.6 : 1,
+                color: '#fff', 
+                border: '2px solid #ababb9', 
+                borderRadius: 10, 
+                fontFamily: 'serif', 
+                fontSize: '15px' 
+            }}
+        >
+            Next →
+        </button>
+    </div>
+)}
         </>
     )
 }

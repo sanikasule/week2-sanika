@@ -61,7 +61,7 @@ const TradeForm: React.FC<TradeFormProps> = ({
 
             <div style={{display: 'flex', gap: 8}}>
                 {(['BUY', 'SELL'] as const).map(t => (
-                    <button key={t} type="button" onClick={() => setForm(prev => ({...prev, type: t}))} style={{background: form.type === t ? '#8236fd' : '#e5e7eb', color: form.type === t ? '#fff' : '#374151', padding: '6px 16px', border: '2px solid #ababb9', borderRadius: 10, fontFamily: 'Times New Roman, serif', fontSize: '15px'}}>
+                    <button key={t} type="button" onClick={() => setForm(prev => ({...prev, type: t}))} style={{background: form.type === t ? '#8236fd' : '#e5e7eb', color: form.type === t ? '#fff' : '#374151', padding: '6px 16px', border: '2px solid #ababb9', borderRadius: 10, fontFamily: 'Times New Roman, serif', fontSize: '15px', cursor: 'pointer'}}>
                         {t}
                     </button>
                 ))}
@@ -71,7 +71,7 @@ const TradeForm: React.FC<TradeFormProps> = ({
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm(prev => ({...prev, quantity: Number(e.target.value)}))} placeholder="Quantity" style={{border: '2px solid #ababb9',borderRadius: 4, background: '#fff', fontFamily: 'Times New Roman, serif', fontSize: '15px'}}/>
 
             <p>Price: ${form.price.toFixed(2)} | Total: ${(form.price*form.quantity).toFixed(2)}</p>
-            <button type="submit" disabled={!form.symbol} style={{border: '2px solid #ababb9',borderRadius: 4, background: '#8236fd', color: '#fff', padding: 10, width: 200, fontFamily: 'Times New Roman, serif', fontSize: '15px'}}>Submit Trade</button>
+            <button type="submit" disabled={!form.symbol} style={{border: '2px solid #ababb9',borderRadius: 4, background: '#8236fd', color: '#fff', padding: 10, width: 200, fontFamily: 'Times New Roman, serif', fontSize: '15px', cursor: 'pointer'}}>Submit Trade</button>
         </form>
     )
 }
