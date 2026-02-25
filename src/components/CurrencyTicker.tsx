@@ -11,6 +11,9 @@ const sampleCurrencies: CurrencyItem[] = [
   { pair: "EUR/INR", rate: 89.45, changePercent: -0.12 },
   { pair: "GBP/INR", rate: 104.22, changePercent: 0.35 },
   { pair: "JPY/INR", rate: 0.56, changePercent: -0.08 },
+  { pair: "AUD/INR", rate: 64.26, changePercent: -0.11 },
+  { pair: "CAD/INR", rate: 66.40, changePercent: 0.15 },
+  { pair: "SGD/INR", rate: 71.80, changePercent: 0.20 },
 ];
 
 const CurrencyTicker: React.FC = () => {
