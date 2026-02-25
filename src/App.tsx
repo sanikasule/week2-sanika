@@ -17,6 +17,7 @@ import CardGridSkeleton from './skeletons/CardGridSkeleton';
 import FormSkeleton from './skeletons/FormSkeleton';
 import CurrencyTicker from "./components/CurrencyTicker";
 import StockComparePanel from './components/StockComparePanel';
+import PositionComparePanel from './components/PositionComparePanel';
 
 const LiveQuotesFeature = lazy(function() {
   return import('./features/quotes/LiveQuotesFeature')
@@ -231,6 +232,7 @@ function App() {
       </SuspenseBoundary>
 
       <StockComparePanel />
+      <PositionComparePanel />
     </div>
   );
 }

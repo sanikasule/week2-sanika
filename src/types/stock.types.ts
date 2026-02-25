@@ -44,4 +44,5 @@ export interface Position {
     ltp: number;
     pnl: number;
     pnlPct: number;
+    __actions?: never;
 }

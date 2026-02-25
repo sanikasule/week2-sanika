@@ -156,154 +156,37 @@ export const holdings: Holding[] = [
 ];
 
 export const positions: Position[] = [
-  {
-    id: 'p1', symbol: 'AAPL', qty: 10,
-    avgPrice: 175.00, ltp: 189.30,
-    pnl: 143.00, pnlPct: 8.17, 
-  },
-  {
-    id: 'p2', symbol: 'MSFT', qty: 5,
-    avgPrice: 360.00, ltp: 378.90,
-    pnl: 94.50, pnlPct: 5.25, 
-  },
-  {
-    id: 'p3', symbol: 'TSLA', qty: 8,
-    avgPrice: 265.00, ltp: 248.50,
-    pnl: -132.00, pnlPct: -6.23, 
-  },
-  {
-    id: 'p4', symbol: 'GOOGL', qty: 15,
-    avgPrice: 145.00, ltp: 141.80,
-    pnl: -48.00, pnlPct: -2.21, 
-  },
-  {
-    id: 'p5', symbol: 'JPM', qty: 20,
-    avgPrice: 192.00, ltp: 196.40,
-    pnl: 88.00, pnlPct: 2.29, 
-  },
-  {
-    id: 'p6', symbol: 'NVDA', qty: 10,
-    avgPrice: 680.50, ltp: 726.13,
-    pnl: 456.30, pnlPct: 6.71, 
-  },
-  {
-    id: 'p7', symbol: 'AMZN', qty: 20,
-    avgPrice: 170.10, ltp: 174.42,
-    pnl: 86.40, pnlPct: 2.54, 
-  },
-  {
-    id: 'p8', symbol: 'UNH', qty: 4,
-    avgPrice: 510.00, ltp: 525.60,
-    pnl: 62.40, pnlPct: 3.06, 
-  },
-  {
-    id: 'p9', symbol: 'XOM', qty: 25,
-    avgPrice: 106.00, ltp: 103.15,
-    pnl: -71.25, pnlPct: -2.69, 
-  },
-  {
-    id: 'p10', symbol: 'DIS', qty: 30,
-    avgPrice: 105.40, ltp: 110.25,
-    pnl: 145.50, pnlPct: 4.60, 
-  },
-  {
-    id: 'p11', symbol: 'AAPL', qty: 10,
-    avgPrice: 175.00, ltp: 189.30,
-    pnl: 143.00, pnlPct: 8.17, 
-  },
-  {
-    id: 'p12', symbol: 'MSFT', qty: 5,
-    avgPrice: 360.00, ltp: 378.90,
-    pnl: 94.50, pnlPct: 5.25, 
-  },
-  {
-    id: 'p13', symbol: 'TSLA', qty: 8,
-    avgPrice: 265.00, ltp: 248.50,
-    pnl: -132.00, pnlPct: -6.23, 
-  },
-  {
-    id: 'p14', symbol: 'GOOGL', qty: 15,
-    avgPrice: 145.00, ltp: 141.80,
-    pnl: -48.00, pnlPct: -2.21, 
-  },
-  {
-    id: 'p15', symbol: 'JPM', qty: 20,
-    avgPrice: 192.00, ltp: 196.40,
-    pnl: 88.00, pnlPct: 2.29, 
-  },
-  {
-    id: 'p16', symbol: 'NVDA', qty: 10,
-    avgPrice: 680.50, ltp: 726.13,
-    pnl: 456.30, pnlPct: 6.71, 
-  },
-  {
-    id: 'p17', symbol: 'AMZN', qty: 20,
-    avgPrice: 170.10, ltp: 174.42,
-    pnl: 86.40, pnlPct: 2.54, 
-  },
-  {
-    id: 'p18', symbol: 'UNH', qty: 4,
-    avgPrice: 510.00, ltp: 525.60,
-    pnl: 62.40, pnlPct: 3.06, 
-  },
-  {
-    id: 'p19', symbol: 'XOM', qty: 25,
-    avgPrice: 106.00, ltp: 103.15,
-    pnl: -71.25, pnlPct: -2.69, 
-  },
-  {
-    id: 'p20', symbol: 'DIS', qty: 30,
-    avgPrice: 105.40, ltp: 110.25,
-    pnl: 145.50, pnlPct: 4.60, 
-  },
-  {
-    id: 'p21', symbol: 'AAPL', qty: 10,
-    avgPrice: 175.00, ltp: 189.30,
-    pnl: 143.00, pnlPct: 8.17, 
-  },
-  {
-    id: 'p22', symbol: 'MSFT', qty: 5,
-    avgPrice: 360.00, ltp: 378.90,
-    pnl: 94.50, pnlPct: 5.25, 
-  },
-  {
-    id: 'p23', symbol: 'TSLA', qty: 8,
-    avgPrice: 265.00, ltp: 248.50,
-    pnl: -132.00, pnlPct: -6.23, 
-  },
-  {
-    id: 'p24', symbol: 'GOOGL', qty: 15,
-    avgPrice: 145.00, ltp: 141.80,
-    pnl: -48.00, pnlPct: -2.21, 
-  },
-  {
-    id: 'p25', symbol: 'JPM', qty: 20,
-    avgPrice: 192.00, ltp: 196.40,
-    pnl: 88.00, pnlPct: 2.29, 
-  },
-  {
-    id: 'p26', symbol: 'NVDA', qty: 10,
-    avgPrice: 680.50, ltp: 726.13,
-    pnl: 456.30, pnlPct: 6.71, 
-  },
-  {
-    id: 'p27', symbol: 'AMZN', qty: 20,
-    avgPrice: 170.10, ltp: 174.42,
-    pnl: 86.40, pnlPct: 2.54, 
-  },
-  {
-    id: 'p28', symbol: 'UNH', qty: 4,
-    avgPrice: 510.00, ltp: 525.60,
-    pnl: 62.40, pnlPct: 3.06, 
-  },
-  {
-    id: 'p29', symbol: 'XOM', qty: 25,
-    avgPrice: 106.00, ltp: 103.15,
-    pnl: -71.25, pnlPct: -2.69, 
-  },
-  {
-    id: 'p30', symbol: 'DIS', qty: 30,
-    avgPrice: 105.40, ltp: 110.25,
-    pnl: 145.50, pnlPct: 4.60, 
-  },
+  { id: 'p1', symbol: 'AAPL', qty: 12, avgPrice: 178.00, ltp: 189.30, pnl: 135.60, pnlPct: 6.35 },
+  { id: 'p2', symbol: 'GOOGL', qty: 10, avgPrice: 150.00, ltp: 141.80, pnl: -82.00, pnlPct: -5.47 },
+  { id: 'p3', symbol: 'MSFT', qty: 6, avgPrice: 350.00, ltp: 378.90, pnl: 173.40, pnlPct: 8.26 },
+  { id: 'p4', symbol: 'TSLA', qty: 7, avgPrice: 260.00, ltp: 248.50, pnl: -80.50, pnlPct: -4.42 },
+  { id: 'p5', symbol: 'JPM', qty: 25, avgPrice: 190.00, ltp: 196.40, pnl: 160.00, pnlPct: 3.37 },
+  { id: 'p6', symbol: 'NVDA', qty: 5, avgPrice: 690.00, ltp: 726.13, pnl: 180.65, pnlPct: 5.24 },
+  { id: 'p7', symbol: 'AMZN', qty: 18, avgPrice: 168.00, ltp: 174.42, pnl: 115.56, pnlPct: 3.82 },
+  { id: 'p8', symbol: 'UNH', qty: 3, avgPrice: 500.00, ltp: 525.60, pnl: 76.80, pnlPct: 5.12 },
+  { id: 'p9', symbol: 'XOM', qty: 30, avgPrice: 108.00, ltp: 103.15, pnl: -145.50, pnlPct: -4.49 },
+  { id: 'p10', symbol: 'DIS', qty: 20, avgPrice: 102.00, ltp: 110.25, pnl: 165.00, pnlPct: 8.09 },
+
+  { id: 'p11', symbol: 'NFLX', qty: 4, avgPrice: 580.00, ltp: 605.88, pnl: 103.52, pnlPct: 4.46 },
+  { id: 'p12', symbol: 'V', qty: 10, avgPrice: 270.00, ltp: 282.15, pnl: 121.50, pnlPct: 4.50 },
+  { id: 'p13', symbol: 'META', qty: 8, avgPrice: 500.00, ltp: 484.02, pnl: -127.84, pnlPct: -3.20 },
+  { id: 'p14', symbol: 'BRK.B', qty: 6, avgPrice: 395.00, ltp: 408.20, pnl: 79.20, pnlPct: 3.34 },
+  { id: 'p15', symbol: 'LLY', qty: 3, avgPrice: 730.00, ltp: 752.10, pnl: 66.30, pnlPct: 3.03 },
+  { id: 'p16', symbol: 'HD', qty: 9, avgPrice: 370.00, ltp: 362.45, pnl: -67.95, pnlPct: -2.04 },
+  { id: 'p17', symbol: 'PG', qty: 15, avgPrice: 155.00, ltp: 160.12, pnl: 76.80, pnlPct: 3.30 },
+  { id: 'p18', symbol: 'COST', qty: 4, avgPrice: 700.00, ltp: 725.30, pnl: 101.20, pnlPct: 3.61 },
+  { id: 'p19', symbol: 'CVX', qty: 12, avgPrice: 160.00, ltp: 154.20, pnl: -69.60, pnlPct: -3.62 },
+  { id: 'p20', symbol: 'KO', qty: 40, avgPrice: 58.00, ltp: 60.15, pnl: 86.00, pnlPct: 3.71 },
+
+  { id: 'p21', symbol: 'PEP', qty: 10, avgPrice: 172.00, ltp: 168.45, pnl: -35.50, pnlPct: -2.06 },
+  { id: 'p22', symbol: 'ADBE', qty: 5, avgPrice: 560.00, ltp: 540.22, pnl: -98.90, pnlPct: -3.53 },
+  { id: 'p23', symbol: 'WMT', qty: 14, avgPrice: 170.00, ltp: 175.55, pnl: 77.70, pnlPct: 3.26 },
+  { id: 'p24', symbol: 'CRM', qty: 7, avgPrice: 285.00, ltp: 298.10, pnl: 91.70, pnlPct: 4.60 },
+  { id: 'p25', symbol: 'BAC', qty: 50, avgPrice: 33.00, ltp: 34.12, pnl: 56.00, pnlPct: 3.39 },
+
+  { id: 'p26', symbol: 'AAPL', qty: 8, avgPrice: 185.00, ltp: 189.30, pnl: 34.40, pnlPct: 2.32 },
+  { id: 'p27', symbol: 'MSFT', qty: 3, avgPrice: 390.00, ltp: 378.90, pnl: -33.30, pnlPct: -2.85 },
+  { id: 'p28', symbol: 'NVDA', qty: 2, avgPrice: 750.00, ltp: 726.13, pnl: -47.74, pnlPct: -3.18 },
+  { id: 'p29', symbol: 'AMZN', qty: 10, avgPrice: 180.00, ltp: 174.42, pnl: -55.80, pnlPct: -3.10 },
+  { id: 'p30', symbol: 'JPM', qty: 12, avgPrice: 200.00, ltp: 196.40, pnl: -43.20, pnlPct: -1.80 },
 ];
