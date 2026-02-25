@@ -16,6 +16,7 @@ import TableSkeleton from './skeletons/TableSkeleton';
 import CardGridSkeleton from './skeletons/CardGridSkeleton';
 import FormSkeleton from './skeletons/FormSkeleton';
 import CurrencyTicker from "./components/CurrencyTicker";
+import StockComparePanel from './components/StockComparePanel';
 
 const LiveQuotesFeature = lazy(function() {
   return import('./features/quotes/LiveQuotesFeature')
@@ -228,6 +229,8 @@ function App() {
         } > 
           <TradeFeature tradeHistory={tradeHistory} stocks={stocks} selectedStock={selectedStock} onSubmitTrade={handleNewTrade} /> 
       </SuspenseBoundary>
+
+      <StockComparePanel />
     </div>
   );
 }
