@@ -78,3 +78,4 @@ const PortfolioSummary: React.FC<PortfolioSummaryProps> = ({availableStocks}) =>
 }
 
 export default PortfolioSummary;
+
