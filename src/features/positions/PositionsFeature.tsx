@@ -336,7 +336,7 @@ const PositionFeature: React.FC<PositionFeatureProps> = ({
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  addPosition(row); 
+                  addPosition({ ...row, id: row.id, qty: 1 }); 
                 }}
                 style={{
                   background: 'transparent',

@@ -6,11 +6,10 @@
 // import TradeForm from './components/TradeForm';
 // import DataTable from './components/DataTable';
 
-import { useState, lazy } from 'react';
+import { lazy } from 'react';
 // Data
-import { stocks, trades, holdings } from './data/stockData';
+import { holdings } from './data/stockData';
 // Types
-import type { Stock, Trade } from './types/stock.types';
 import SuspenseBoundary from './boundaries/SuspenseBoundary';
 import TableSkeleton from './skeletons/TableSkeleton';
 import CardGridSkeleton from './skeletons/CardGridSkeleton';
@@ -42,33 +41,33 @@ const TradeFeature = lazy(function() {
 // type NewTradeInput = Omit<Trade, 'id' | 'date'>;
 
 function App() {
-  const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sectorFilter, setSectorFilter] = useState('');
-  const [tradeHistory, setTradeHistory] = useState<Trade[]>(trades);
-  // const [holdingsArray, setHoldingsArray] = useState<Holding[]>(holdings);
+  // const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
+  // const [searchQuery, setSearchQuery] = useState('');
+  // const [sectorFilter, setSectorFilter] = useState('');
+  // const [tradeHistory, setTradeHistory] = useState<Trade[]>(trades);
+  // // const [holdingsArray, setHoldingsArray] = useState<Holding[]>(holdings);
 
-  // Filter stocks based on search and sector
-  var filteredStocks = stocks.filter(function(stock) { 
-    var queryLower = searchQuery.toLowerCase(); 
-    var symbolMatches = stock.symbol.toLowerCase().includes(queryLower); var nameMatches = stock.name.toLowerCase().includes(queryLower); 
-    var searchMatches = symbolMatches || nameMatches; 
-    var noFilter = sectorFilter === ''; 
-    var sectorMatches = noFilter || stock.sector === sectorFilter; 
-    return searchMatches && sectorMatches; 
-  });
+  // // Filter stocks based on search and sector
+  // var filteredStocks = stocks.filter(function(stock) { 
+  //   var queryLower = searchQuery.toLowerCase(); 
+  //   var symbolMatches = stock.symbol.toLowerCase().includes(queryLower); var nameMatches = stock.name.toLowerCase().includes(queryLower); 
+  //   var searchMatches = symbolMatches || nameMatches; 
+  //   var noFilter = sectorFilter === ''; 
+  //   var sectorMatches = noFilter || stock.sector === sectorFilter; 
+  //   return searchMatches && sectorMatches; 
+  // });
 
   // Add a new trade (receives NewTradeInput — no id/date)
 
-  const handleNewTrade = (input: Omit<Trade, 'id' | 'date'>) => {
-    const newTrade: Trade = {
-      ...input,
-      id: `t${Date.now()}`,
-      date: new Date().toISOString().split('T')[0],
-    };
+  // const handleNewTrade = (input: Omit<Trade, 'id' | 'date'>) => {
+  //   const newTrade: Trade = {
+  //     ...input,
+  //     id: `t${Date.now()}`,
+  //     date: new Date().toISOString().split('T')[0],
+  //   };
 
-    setTradeHistory(prev => [newTrade, ...prev]);
-  };
+  //   setTradeHistory(prev => [newTrade, ...prev]);
+  // };
 
   return (
     <div style={{ maxWidth: 1100, margin: '0 auto', padding: 24, fontFamily: 'Times New Roman, serif', background: '#0e0741' }}>
@@ -199,12 +198,11 @@ function App() {
      <SuspenseBoundary 
         fallback={ 
           <> 
-            <CardGridSkeleton count={filteredStocks.length || 3} /> <TableSkeleton rows={5} cols={6} title="Live Quotes" /> 
+            <CardGridSkeleton count={3} /> <TableSkeleton rows={5} cols={6} title="Live Quotes" /> 
           </> 
         } 
       > 
-        <LiveQuotesFeature stocks={filteredStocks} selectedStock= {selectedStock} onSelectStock={setSelectedStock} onSearch={setSearchQuery} onFilterChange={setSectorFilter} 
-        /> 
+        <LiveQuotesFeature /> 
       </SuspenseBoundary>
 
       <SuspenseBoundary 
@@ -228,7 +226,7 @@ function App() {
             <TableSkeleton rows={3} cols={5} title="Trade History" /> <FormSkeleton /> 
           </> 
         } > 
-          <TradeFeature tradeHistory={tradeHistory} stocks={stocks} selectedStock={selectedStock} onSubmitTrade={handleNewTrade} /> 
+          <TradeFeature /> 
       </SuspenseBoundary>
 
       <StockComparePanel />

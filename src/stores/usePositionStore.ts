@@ -51,7 +51,7 @@ const usePositionStore = create<PositionStore>()((set, get) => ({
             if (existing) {
                 // Merge: weighted average price calculation
                 return {
-                    positions: prev.allPositions.map(function (p) {
+                    allPositions: prev.allPositions.map(function (p) {
                         if (p.symbol !== position.symbol) return p;
                         const totalQty = p.qty + position.qty;
                         const avgPrice = (
