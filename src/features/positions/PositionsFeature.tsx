@@ -85,6 +85,7 @@ import type { Position } from '../../types/stock.types';
 import DataTable from '../../components/DataTable';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import usePositionStore from '../../stores/usePositionStore';
+import { useShallow } from 'zustand/shallow';
 
 interface PositionFeatureProps {
   positions: Position[];
@@ -100,9 +101,16 @@ const PositionFeature: React.FC<PositionFeatureProps> = ({
   const { visibleItems, bottomRef, hasMore } =
     useInfiniteScroll(positions, 5);
 
-  
-  const toggleCompare = usePositionStore((s) => s.toggleCompare);
-  const compareList   = usePositionStore((s) => s.compareList);
+  const {toggleCompare, compareList, removePosition} = usePositionStore(
+    useShallow((s) => ({
+      toggleCompare: s.toggleCompare,
+      compareList: s.compareList,
+      removePosition: s.removePosition
+    }))
+  )
+  // const toggleCompare = usePositionStore((s) => s.toggleCompare);
+  // const compareList   = usePositionStore((s) => s.compareList);
+  // const removePosition = usePositionStore((s) => s.removePosition)
 
   const isInCompare = (position: Position) =>
     compareList.some((item) => item.id === position.id);
@@ -214,6 +222,32 @@ const PositionFeature: React.FC<PositionFeatureProps> = ({
                   }}
                 >
                   {inCompare ? '✓ Compare' : '+ Compare'}
+                </button>
+              );
+            },
+          },
+
+          {
+            key: '__remove',
+            header: '',
+            render: (_, row) => {
+              return (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    removePosition(String(row.id));
+                  }}
+                  style={{
+                    background: '##ef8e8e',
+                    color: 'red',
+                    border: '1px solid red',
+                    borderRadius: 4,
+                    padding: '2px 8px',
+                    fontSize: 11,
+                    cursor: 'pointer',
+                  }}
+                >
+                  Remove
                 </button>
               );
             },

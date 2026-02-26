@@ -11,6 +11,7 @@ interface PositionStore {
     toggleCompare: (position: Position) => void;
     clearCompare: () => void;
     isInCompare: (id: string) => boolean;
+    removePosition: (id: string) => void;
 }
 
 const usePositionStore = create<PositionStore>() ((set, get) => ({
@@ -37,6 +38,12 @@ const usePositionStore = create<PositionStore>() ((set, get) => ({
     clearCompare: () => set({compareList: []}),
 
     isInCompare: (id) => get().compareList.some(s => s.id ===id),
+
+    removePosition: (id) => set((state) => {
+        return {
+            allPositions: state.allPositions.filter(s => s.id !== id)
+        }
+    })
 }));
 
 export default usePositionStore;
