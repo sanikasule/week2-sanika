@@ -8,7 +8,7 @@
 
 import { useState, lazy } from 'react';
 // Data
-import { stocks, trades, holdings, positions } from './data/stockData';
+import { stocks, trades, holdings } from './data/stockData';
 // Types
 import type { Stock, Trade } from './types/stock.types';
 import SuspenseBoundary from './boundaries/SuspenseBoundary';
@@ -214,7 +214,7 @@ function App() {
       </SuspenseBoundary>
 
       <SuspenseBoundary 
-        fallback={<TableSkeleton rows={5} cols={6} title="Positions" />} > <PositionFeature positions={positions} /> 
+        fallback={<TableSkeleton rows={5} cols={6} title="Positions" />} > <PositionFeature /> 
       </SuspenseBoundary>
 
       {/* ── FEATURE 4: Holdings ── */} 
