@@ -20,7 +20,7 @@ export const usePortfolioStore = create<PortfolioStore>(function(set) {
         holdings: [],
         totalValue: 0,
         gainLoss: 0,
-        isLoading: true,
+        isLoading: false,
         error: null,
 
         loadPortfolio: function (availableStocks) {

@@ -210,7 +210,7 @@ function App() {
       <SuspenseBoundary 
         fallback={<TableSkeleton rows={3} cols={3} title="Portfolio Summary" />} 
         > 
-        <PortfolioFeature availableStocks={stocks} /> 
+        <PortfolioFeature /> 
       </SuspenseBoundary>
 
       <SuspenseBoundary 
