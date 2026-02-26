@@ -223,12 +223,13 @@ const PositionFeature: React.FC<PositionFeatureProps> = ({
 }) => {
   // 1. Get data and actions from the store
   // We use allPositions from store as the source of truth
-  const { allPositions, toggleCompare, compareList, removePosition } = usePositionStore(
+  const { allPositions, toggleCompare, compareList, addPosition, removePosition } = usePositionStore(
     useShallow((s) => ({
       allPositions: s.allPositions,
       toggleCompare: s.toggleCompare,
       compareList: s.compareList,
-      removePosition: s.removePosition
+      addPosition: s.addPosition,
+      removePosition: s.removePosition,
     }))
   );
 
@@ -327,6 +328,29 @@ const PositionFeature: React.FC<PositionFeatureProps> = ({
                 </button>
               );
             },
+          },
+          {
+            key: '__add',
+            header: 'Add',
+            render: (_, row) => (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  addPosition(row); 
+                }}
+                style={{
+                  background: 'transparent',
+                  color: 'green',
+                  border: '1px solid green',
+                  borderRadius: 4,
+                  padding: '4px 12px',
+                  fontSize: 11,
+                  cursor: 'pointer',
+                }}
+              >
+                Add
+              </button>
+            ),
           },
           {
             key: '__remove',

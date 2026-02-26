@@ -42,24 +42,31 @@ const usePositionStore = create<PositionStore>()((set, get) => ({
 
   isInCompare: (id) => get().compareList.some(s => s.id === id),
 
-  addPosition: (position) => set((state) => {
-    const existingIndex = state.allPositions.findIndex(p => p.symbol === position.symbol);
+    addPosition: function (position) {
+        set(function (prev) {
+            const existing = prev.allPositions.find(function (p) {
+                return p.symbol === position.symbol;
+            });
 
-    if (existingIndex !== -1) {
-      const updatedPositions = [...state.allPositions];
-      const p = updatedPositions[existingIndex];
-      
-      const totalQty = p.qty + position.qty;
-      // Weighted Average Price Calculation
-      const avgPrice = ((p.avgPrice * p.qty) + (position.avgPrice * position.qty)) / totalQty;
+            if (existing) {
+                // Merge: weighted average price calculation
+                return {
+                    positions: prev.allPositions.map(function (p) {
+                        if (p.symbol !== position.symbol) return p;
+                        const totalQty = p.qty + position.qty;
+                        const avgPrice = (
+                            (p.avgPrice * p.qty)
+                            + (position.avgPrice * position.qty)
 
-      updatedPositions[existingIndex] = { ...p, qty: totalQty, avgPrice };
-      
-      return { allPositions: updatedPositions };
-    }
-
-    return { allPositions: [...state.allPositions, position] };
-  }),
+                        ) / totalQty;
+                        return { ...p, quantity: totalQty, avgPrice };
+                    }),
+                };
+            }
+            // New symbol — just append
+            return { allPositions: [...prev.allPositions, position] };
+        });
+    },
 
   removePosition: (id) => set((state) => ({
     allPositions: state.allPositions.filter(s => s.id !== id),
